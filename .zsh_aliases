@@ -1,0 +1,66 @@
+# system
+alias c='clear'
+alias r='reset'
+
+# interactive modes
+alias mvi='mv -i'
+alias cpi='cp -i'
+
+# utility
+alias x='atool -x'
+alias s='du -h --max-depth=1' # file size
+
+# Configuration quick access
+alias -g .brc='~/.bashrc'
+alias -g .vrc='~/.vimrc'
+alias -g .zrc='~/.zshrc'
+alias -g .al='~/.oh-my-zsh/custom/aliases.zsh'
+
+# ls
+alias l='ls -CtF --group-directories-first'
+alias ll='ls -ACtF --group-directories-first'
+alias lll='ls -oLhFAt'
+alias la='ls -CF --group-directories-first'
+alias lla='ls -ACF --group-directories-first'
+alias llla='ls -oLhFA'
+alias l1='ls -1oLhFA'
+
+# tree
+alias t='tree -dL 3 -I "__*" -I ".*"'
+alias tt='tree -dahFL 5'
+alias ttt='tree -aFul'
+
+# apt
+alias p='sudo apt'
+alias pi='sudo apt install'
+alias pr='sudo apt --purge --autoremove remove'
+alias pl='sudo apt list'
+alias pli='sudo apt list --installed'
+alias pu='sudo apt update'
+alias puu='sudo apt upgrade'
+
+# pipe tools
+alias -g L='| less'
+alias -g H='| head'
+alias -g T='| tail'
+alias -g N='| /dev/null'
+alias -g G='| grep'
+alias -g S='| sort'
+alias -g C='| wc'
+alias -g CL='| wc -l'
+alias -g CW='| wc -w'
+alias -g CC='| wc -c'
+
+# dev
+alias todo='grep "TODO"; grep "FIXME"'
+
+# python
+alias ipy='ipython --no-banner'
+alias py='python'
+alias pym='python -m'
+alias pyi='python -m pip install'
+alias pyu='python -m pip uninstall'
+
+# git
+alias gs='git status'
+
