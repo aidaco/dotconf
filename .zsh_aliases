@@ -14,7 +14,7 @@ alias s='du -h --max-depth=1' # file size
 alias -g .brc='~/.bashrc'
 alias -g .vrc='~/.vimrc'
 alias -g .zrc='~/.zshrc'
-alias -g .al='~/.oh-my-zsh/custom/aliases.zsh'
+alias -g .al='~/.zsh_aliases'
 
 # ls
 alias l='ls -CtF --group-directories-first'
@@ -55,7 +55,7 @@ alias -g CC='| wc -c'
 alias todo='grep "TODO"; grep "FIXME"'
 
 # python
-alias ipy='ipython --no-banner'
+alias ipy='clear && ipython'
 alias py='python'
 alias pym='python -m'
 alias pyi='python -m pip install'
