@@ -1057,7 +1057,7 @@ c.TerminalInteractiveShell.editor = 'vim'
 
 from IPython.terminal.prompts import Prompts, Token
 
-class CustomPrompt(Prompts):
+class CleanPrompt(Prompts):
     def in_prompt_tokens(self, cli=None):
         return [
             (Token.Prompt, '['),
@@ -1075,7 +1075,24 @@ class CustomPrompt(Prompts):
             (Token.OutPrompt, ']\n'),
         ]
 
-c.TerminalInteractiveShell.prompts_class = CustomPrompt
+class SlimPrompt(Prompts):
+    def in_prompt_tokens(self, cli=None):
+        return [
+            (Token, str(self.shell.execution_count)),
+            (Token.Prompt, '|'),
+        ]
+
+    def continuation_prompt_tokens(self, cli=None, width=0):
+        return [(Token, ' ' * width),
+                (Token, '|')
+        ]
+
+    def out_prompt_tokens(self, cli=None):
+        return [(Token.OutPrompt, ' |')]
+
+
+
+c.TerminalInteractiveShell.prompts_class = SlimPrompt
 c.TerminalInteractiveShell.confirm_exit = False
 
 # Enable autoreload
