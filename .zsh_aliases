@@ -71,6 +71,8 @@ alias pyu='python -m pip uninstall'
 alias gs='git status'
 alias ga='git add'
 alias gau='git add -u'
+alias gc='git commit'
+alias gcm='git commit -m'
 alias grm='git rm'
 alias grmc='git rm --cached'
 
