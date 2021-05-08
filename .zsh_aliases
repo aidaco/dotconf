@@ -10,11 +10,16 @@ alias cpi='cp -i'
 alias x='atool -x'
 alias s='du -h --max-depth=1' # file size
 
+# tmuxtemplates
+alias -g e='~/.config/tmuxtemplates/editor'
+
 # Configuration quick access
 alias -g .brc='~/.bashrc'
 alias -g .vrc='~/.vimrc'
 alias -g .zrc='~/.zshrc'
 alias -g .al='~/.zsh_aliases'
+alias -g .ipyrc='~/.ipython/profile_default/ipython_config.py'
+alias -g .trc='~/.tmux.conf'
 
 # ls
 alias l='ls -CtF --group-directories-first'
@@ -30,14 +35,15 @@ alias t='tree -dL 3 -I "__*" -I ".*"'
 alias tt='tree -dahFL 5'
 alias ttt='tree -aFul'
 
-# apt
-alias p='sudo apt'
-alias pi='sudo apt install'
-alias pr='sudo apt --purge --autoremove remove'
-alias pl='sudo apt list'
-alias pli='sudo apt list --installed'
-alias pu='sudo apt update'
-alias puu='sudo apt upgrade'
+# pacman
+alias pk='sudo pacman'
+alias pki='sudo pacman -S'
+alias pkr='sudo pacman -Rs'
+alias pks='sudo pacman -Ss'
+alias pkq='sudo pacman -Q'
+alias pkqm='sudo pacman -Qm'
+alias pku='sudo pacman -U'
+alias pkuu='sudo pacman -Syu'
 
 # pipe tools
 alias -g L='| less'
@@ -63,4 +69,8 @@ alias pyu='python -m pip uninstall'
 
 # git
 alias gs='git status'
+alias ga='git add'
+alias gau='git add -u'
+alias grm='git rm'
+alias grmc='git rm --cached'
 

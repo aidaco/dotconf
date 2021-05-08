@@ -10,6 +10,25 @@ set scrolloff=99
 set number
 set splitbelow
 set termwinsize=10*0
+let g:netrw_banner=0
+let g:NERDTreeHijackNetrw=0
+let g:netrw_winsize=25
+let g:netrw_altv=1
+let g:netrw_liststyle=3
+
+nmap          <C-W><     <C-W><<SID>ws
+nmap          <C-W>>     <C-W>><SID>ws
+nn <script>   <SID>ws<   <C-W><<SID>ws
+nn <script>   <SID>ws>   <C-W>><SID>ws
+nmap          <SID>ws    <Nop>
+
+nmap          <C-W>+     <C-W>+<SID>ws
+nmap          <C-W>-     <C-W>-<SID>ws
+nn <script>   <SID>ws+   <C-W>+<SID>ws
+nn <script>   <SID>ws-   <C-W>-<SID>ws
+nmap          <SID>ws    <Nop>
+
+
 
 " Initialize Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -21,6 +40,7 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'preservim/nerdtree'
+Plugin 'evanleck/vim-svelte'
 
 " End user plugins
 call vundle#end()
@@ -39,10 +59,20 @@ au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
-    \ set textwidth=79 |
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix
+
+" Svelte indentation
+au BufNewFile,BufRead *.svelte
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+
+
 
 " Mark extraneous whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
