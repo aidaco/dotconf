@@ -1,4 +1,3 @@
-c = get_config()
 # Configuration file for ipython.
 
 #------------------------------------------------------------------------------
@@ -38,15 +37,6 @@ c = get_config()
 ## A list of dotted module names of IPython extensions to load.
 #  Default: []
 # c.InteractiveShellApp.extensions = []
-
-## DEPRECATED. Dotted module name of a single extra IPython extension to load.
-#  
-#  Only one extension can be added this way.
-#  
-#  Only used with traitlets < 5.0, plural extra_extensions list is used in
-#  traitlets 5.
-#  Default: ''
-# c.InteractiveShellApp.extra_extension = ''
 
 ## Dotted module name(s) of one or more IPython extensions to load.
 #  
@@ -202,10 +192,6 @@ c = get_config()
 ## Whether to install the default config files into the profile dir.
 #  See also: BaseIPythonApplication.copy_config_files
 # c.TerminalIPythonApp.copy_config_files = False
-
-## Whether to display a banner upon starting IPython.
-#  Default: True
-c.TerminalIPythonApp.display_banner = False
 
 ## Run the file referenced by the PYTHONSTARTUP environment
 #  See also: InteractiveShellApp.exec_PYTHONSTARTUP
@@ -571,10 +557,6 @@ c.TerminalIPythonApp.display_banner = False
 ## Shortcut style to use at the prompt. 'vi' or 'emacs'.
 #  Default: 'emacs'
 # c.TerminalInteractiveShell.editing_mode = 'emacs'
-
-## Set the editor used by IPython (default to $EDITOR/vi/notepad).
-#  Default: 'vi'
-c.TerminalInteractiveShell.editor = 'vim'
 
 ## Allows to enable/disable the prompt toolkit history search
 #  Default: True
@@ -1057,44 +1039,34 @@ c.TerminalInteractiveShell.editor = 'vim'
 
 from IPython.terminal.prompts import Prompts, Token
 
-class CleanPrompt(Prompts):
-    def in_prompt_tokens(self, cli=None):
-        return [
-            (Token.Prompt, '['),
-            (Token, str(self.shell.execution_count)),
-            (Token.Prompt, ']\n'),
-        ]
-
-    def continuation_prompt_tokens(self, cli=None, width=0):
-        return (Token, '>') * width
-
-    def out_prompt_tokens(self, cli=None):
-        return [
-            (Token.OutPrompt, '['),
-            (Token, str(self.shell.execution_count)),
-            (Token.OutPrompt, ']\n'),
-        ]
+c = get_config()
 
 class SlimPrompt(Prompts):
     def in_prompt_tokens(self, cli=None):
         return [
-            (Token, str(self.shell.execution_count)),
+            (Token, self.vi_mode()[1:2].upper()),
+            (Token.PromptNum, str(self.shell.execution_count)),
             (Token.Prompt, '|'),
         ]
 
-    def continuation_prompt_tokens(self, cli=None, width=0):
-        return [(Token, ' ' * width),
-                (Token, '|')
+    def continuation_prompt_tokens(self, cli=None, width=None):
+        width = self._width() if width is None else width
+        return [(Token, ' ' * (width-1)),
+                (Token.Prompt, '|')
         ]
 
     def out_prompt_tokens(self, cli=None):
-        return [(Token.OutPrompt, ' |')]
+        return [(Token.OutPromptNum, str(self.shell.execution_count)), (Token.OutPrompt, '|')]
 
 
-
+c.TerminalInteractiveShell.editor = 'vim'
+c.TerminalIPythonApp.display_banner = False
+c.InteractiveShell.separate_in = ''
 c.TerminalInteractiveShell.prompts_class = SlimPrompt
 c.TerminalInteractiveShell.confirm_exit = False
+c.TerminalInteractiveShell.editing_mode = 'vi'
 
 # Enable autoreload
 c.InteractiveShellApp.exec_lines = []
 c.InteractiveShellApp.exec_lines.append('%load_ext autoreload')
+c.InteractiveShellApp.exec_lines.append('%autoreload 2')

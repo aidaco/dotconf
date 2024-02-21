@@ -9,26 +9,37 @@ alias cpi='cp -i'
 # utility
 alias x='atool -x'
 alias s='du -h --max-depth=1' # file size
+alias src='source'
+alias e='nvim'
+alias f='pym misc.filer'
 
 # Configuration quick access
 alias -g .brc='~/.bashrc'
 alias -g .vrc='~/.vimrc'
 alias -g .zrc='~/.zshrc'
 alias -g .al='~/.zsh_aliases'
-alias -g .iprc='~/.ipython/profile_default/ipython_config.py'
+alias -g .ipyrc='~/.ipython/profile_default/ipython_config.py'
 
 # ls
-alias l='ls -CtF --group-directories-first'
-alias ll='ls -ACtF --group-directories-first'
-alias lll='ls -oLhFAt'
-alias la='ls -CF --group-directories-first'
-alias lla='ls -ACF --group-directories-first'
-alias llla='ls -oLhFA'
-alias l1='ls -1oLhFA'
+alias ls='eza'
+alias l='ls -1FHsname --group-directories-first'
+alias ll='ls -1Flhsname --time-style=long-iso --group-directories-first'
+alias la='ls -1FHAsname --group-directories-first'
+alias lla='ls -1FHAlsname --group-directories-first'
+alias lt='ls -1FHsmodified --group-directories-first'
+alias llt='ls -1Flhsmodified --time-style=long-iso --group-directories-first'
+alias lat='ls -1FHAsmodified --group-directories-first'
+alias llat='ls -1FHAlsmodified --group-directories-first'
+function first() {
+	echo $(ls -1Art "$@" | head -n 1);
+}
+function last() {
+	echo $(ls -1At "$@" | head -n 1);
+}
 
 # tree
 alias t='tree -dL 3 -I "__*" -I ".*"'
-alias tt='tree -dahFL 5'
+alias tt='tree -ahFL 5 -I "__*" -I ".*"'
 alias ttt='tree -aFul'
 
 # apt
@@ -42,7 +53,7 @@ alias puu='sudo apt upgrade'
 
 # pipe tools
 alias -g L='| less'
-alias -g H='| head'
+alias -g H='| head -n'
 alias -g T='| tail'
 alias -g N='| /dev/null'
 alias -g G='| grep'
@@ -56,7 +67,7 @@ alias -g CC='| wc -c'
 alias todo='grep "TODO"; grep "FIXME"'
 
 # python
-alias ipy='clear && ipython'
+alias ipy='python -m IPython'
 alias py='python'
 alias pym='python -m'
 alias pyi='python -m pip install'
@@ -64,5 +75,7 @@ alias pyip='python -m pip install --upgrade pip'
 alias pyu='python -m pip uninstall'
 
 # git
+alias git='git --no-pager'
 alias gs='git status'
 
+alias v='wslview'

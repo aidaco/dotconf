@@ -1,0 +1,22 @@
+$PROMPT = '{BOLD_RED}{last_return_code_if_nonzero}{RESET}{BOLD_GREEN}>{RESET}'
+$BOTTOM_TOOLBAR = '{BACKGROUND_WHITE}{BLACK}{user}@{cwd} {localtime}'
+$MULTILINE_PROMPT = ' '
+$COLOR_INPUT = False
+
+$XONSH_SHOW_TRACEBACK = True
+
+# $COMPLETION_IN_THREAD = True
+# $ASYNC_PROMPT_THREAD_WORKERS = 2
+# $ENABLE_ASYNC_PROMPT = True
+
+$UPDATE_COMPLETIONS_ON_KEYPRESS = False
+
+$XONSH_HISTORY_BACKEND = 'sqlite'
+$HISTCONTROL = 'ignoredups'
+
+$AUTO_CD = True
+$XONSH_AUTOPAIR = True
+$XONSH_CTRL_BKSP_DELETION = True
+# $VI_MODE = True
+
+xontrib load coreutils
