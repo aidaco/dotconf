@@ -1,0 +1,21 @@
+[language-server.ruff]
+command = "ruff-lsp"
+
+[[language]]
+name = "python"
+scope = "source.python"
+file-types = ["py"]
+shebangs = ["python"]
+comment-token = "#"
+language-servers = ["ruff", "pyright"]
+formatter = { command = "ruff", args = [
+  "format",
+  "--target-version",
+  "py312",
+  "-",
+] }
+auto-format = true
+
+[[language]]
+name = "toml"
+formatter = { command = "taplo", args = ["fmt", "-"] }

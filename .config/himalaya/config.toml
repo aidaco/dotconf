@@ -1,0 +1,19 @@
+[aidaco]
+backend = "imap"
+email = "aidan@aidan.software"
+display-name = "Aidan Courtney"
+default = true
+imap-host = "mail.aidan.software"
+imap-port = 143
+imap-starttls = true
+imap-login = "aidan@aidan.software"
+imap-auth = "passwd"
+sender = "smtp"
+smtp-host = "mail.aidan.software"
+smtp-port = 587
+smtp-starttls = true
+smtp-login = "aidan@aidan.software"
+smtp-auth = "passwd"
+
+[aidaco.pgp]
+backend = "none"

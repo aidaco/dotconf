@@ -12,6 +12,10 @@ alias s='du -h --max-depth=1' # file size
 alias src='source'
 alias e='hx'
 alias f='pym misc.filer'
+alias d='trash'
+alias dl='trash-list'
+alias de='trash-empty'
+alias dr='trash-restore'
 
 # Configuration quick access
 alias -g .brc='~/.bashrc'
