@@ -1,15 +1,9 @@
-$PROMPT = '{BOLD_RED}{last_return_code_if_nonzero}{RESET}{BOLD_GREEN}>{RESET}'
-$BOTTOM_TOOLBAR = '{BACKGROUND_WHITE}{BLACK}{user}@{cwd} {localtime}'
 $MULTILINE_PROMPT = ' '
-$COLOR_INPUT = False
-
 $XONSH_SHOW_TRACEBACK = True
 
-# $COMPLETION_IN_THREAD = True
-# $ASYNC_PROMPT_THREAD_WORKERS = 2
-# $ENABLE_ASYNC_PROMPT = True
-
-$UPDATE_COMPLETIONS_ON_KEYPRESS = False
+$COMPLETION_IN_THREAD = True
+$ENABLE_ASYNC_PROMPT = True
+#$UPDATE_COMPLETIONS_ON_KEYPRESS = True
 
 $XONSH_HISTORY_BACKEND = 'sqlite'
 $HISTCONTROL = 'ignoredups'
@@ -17,6 +11,29 @@ $HISTCONTROL = 'ignoredups'
 $AUTO_CD = True
 $XONSH_AUTOPAIR = True
 $XONSH_CTRL_BKSP_DELETION = True
-# $VI_MODE = True
+$XONSH_COLOR_STYLE = 'inkpot'
+$VI_MODE = True
+
+# Remove windows paths from WSL
+[$PATH.remove(path) for path in $PATH.paths if path.startswith("/mnt/c/")]
 
 xontrib load coreutils
+xontrib load jedi
+
+source ~/.xsh_aliases
+# XONSH WEBCONFIG START
+$PROMPT = '{BOLD_GREEN}{cwd_base}{RESET} @ '
+# XONSH WEBCONFIG END
+
+# Allow import from cwd
+import sys
+sys.path.insert(0, '')
+
+# convenience imports
+from datetime import datetime, timedelta, timezone
+import functools
+import os
+import sys
+import typing
+from dataclasses import dataclass, field
+from pathlib import Path

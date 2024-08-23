@@ -1,0 +1,93 @@
+# system
+aliases["c"]='clear'
+aliases["r"]='reset'
+
+# interactive modes
+aliases["mvi"]='mv -i'
+aliases["cpi"]='cp -i'
+aliases["d"]='trash'
+aliases['dl']='trash-list'
+aliases['de']='trash-empty'
+aliases["dr"]='trash-restore'
+
+# utility
+aliases["x"]='for zip in g`*.zip`: ![7z x @(zip)] and ![d @(zip)]'
+
+aliases["s"]='du -h --max-depth=1' # file size
+aliases["src"]='source'
+aliases["e"]='hx'
+aliases["f"]='pym misc.filer'
+
+# ls
+aliases["ls"] = 'eza --color=always'
+aliases["l"] = 'ls -1FHsname --group-directories-first'
+aliases["ll"] = 'ls -1Flhsname --time-style=long-iso --group-directories-first'
+aliases["la"] = 'ls -1FHAsname --group-directories-first'
+aliases["lla"] = 'ls -1FHAlsname --group-directories-first'
+aliases["lt"] = 'ls -1FHrsmodified --group-directories-first'
+aliases["llt"] = 'ls -1Flhrsmodified --time-style=long-iso --group-directories-first'
+aliases["lat"] = 'ls -1FHArsmodified --group-directories-first'
+aliases["llat"] = 'ls -1FHAlrsmodified --group-directories-first'
+
+aliases["first"] = """echo $(ls -1Art "$args" | head -n 1)"""
+aliases["last"] = """echo $(ls -1At "$args" | head -n 1)"""
+
+# tree
+aliases["t"]='tree -dL 3 -I "__*" -I ".*"'
+aliases["tt"]='tree -ahFL 5 -I "__*" -I ".*"'
+aliases["ttt"]='tree -aFul'
+
+# apt
+aliases["p"]='sudo apt'
+aliases["pi"]='sudo apt install'
+aliases["pr"]='sudo apt --purge --autoremove remove'
+aliases["pl"]='sudo apt list'
+aliases["pli"]='sudo apt list --installed'
+aliases["pu"]='sudo apt update'
+aliases["puu"]='sudo apt upgrade'
+
+
+# dev
+aliases["todo"]='grep "TODO"; grep "FIXME"'
+
+# python
+aliases["ipy"]='python -m IPython'
+aliases["py"]='python'
+aliases["pym"]='python -m'
+aliases["pyi"]='python -m pip install'
+aliases["pyip"]='python -m pip install --upgrade pip'
+aliases["pyu"]='python -m pip uninstall'
+
+# git
+aliases["git"]='git --no-pager'
+aliases["gs"]='git status'
+aliases["ga"]='git add'
+aliases["gau"]='git add -u'
+aliases["gcm"]='git commit -m'
+
+# himalaya
+aliases["mail"]='himalaya'
+aliases["mailr"]='himalaya read'
+aliases["mailw"]='himalaya write'
+aliases["maild"]='himalaya delete'
+
+aliases["v"]='wslview'
+
+# bt
+aliases["inv"] = "for item in $args: $[mv @(item) ~/shared/Invoices/]"
+
+# rcs
+$XSHAL = p'~/.xsh_aliases'
+$XSHRC = p'~/.xonshrc'
+
+@aliases.register('typewrite')
+def typewrite(args, stdout=None):
+	if stdout is None:
+		print('No stdout')
+		return
+	for ch in ' '.join(args):
+		stdout.write(ch)
+		stdout.flush()
+		time.sleep(0.25)
+	stdout.write('\n')
+	stdout.flush()
