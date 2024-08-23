@@ -1,9 +1,14 @@
+$XONSH_COLOR_STYLE = 'inkpot'
+$PROMPT = '{INTENSE_CYAN}{localtime}{RESET} {BOLD_GREEN}{short_cwd}{RESET} @'
 $MULTILINE_PROMPT = ' '
+#$ENABLE_ASYNC_PROMPT = True
+$UPDATE_PROMPT_ON_KEYPRESS = True
+
 $XONSH_SHOW_TRACEBACK = True
 
 $COMPLETION_IN_THREAD = True
-$ENABLE_ASYNC_PROMPT = True
-#$UPDATE_COMPLETIONS_ON_KEYPRESS = True
+$UPDATE_COMPLETIONS_ON_KEYPRESS = True
+$COMPLETIONS_CONFIRM = False
 
 $XONSH_HISTORY_BACKEND = 'sqlite'
 $HISTCONTROL = 'ignoredups'
@@ -11,7 +16,6 @@ $HISTCONTROL = 'ignoredups'
 $AUTO_CD = True
 $XONSH_AUTOPAIR = True
 $XONSH_CTRL_BKSP_DELETION = True
-$XONSH_COLOR_STYLE = 'inkpot'
 $VI_MODE = True
 
 # Remove windows paths from WSL
@@ -21,9 +25,6 @@ xontrib load coreutils
 xontrib load jedi
 
 source ~/.xsh_aliases
-# XONSH WEBCONFIG START
-$PROMPT = '{BOLD_GREEN}{cwd_base}{RESET} @ '
-# XONSH WEBCONFIG END
 
 # Allow import from cwd
 import sys
