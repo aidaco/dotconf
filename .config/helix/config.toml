@@ -12,3 +12,7 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
+
+[keys.normal]
+backspace = {backspace = "suspend"}
+ret = ["open_below", "normal_mode"]
