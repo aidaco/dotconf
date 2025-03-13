@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/home/tuesday/.zsh/completions:"* ]]; then export FPATH="/home/tuesday/.zsh/completions:$FPATH"; fi
 export ZSH=$HOME/.oh-my-zsh
 export EDITOR=/usr/bin/hx
 
@@ -38,7 +40,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git python tmux)
+plugins=(git python tmux zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -58,6 +60,7 @@ eval "$(pyenv virtualenv-init -)"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/neovim/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.deno/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -76,3 +79,4 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 fpath+=~/.zfunc; autoload -Uz compinit; compinit
 
 zstyle ':completion:*' menu select
+. "/home/tuesday/.deno/env"
